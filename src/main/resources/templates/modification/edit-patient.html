@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editer Médecin</title>
+
+    <link rel="stylesheet" th:href="@{/css/all.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/style_crud.css}"/>
+    
+</head>
+<body>
+    <header>
+        <h1>Editer Médecin</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a th:href="@{/patients}"><i class="fas fa-clock"></i> Voir Listes des patients</a></li>
+            <li><a th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+        </ul>
+    </nav>
+    <main>
+        <form th:action="@{/patients/edit/{idPatient}(idPatient=${patient.idPatient})}" method="post">
+            <input type="hidden" name="_method" value="put"/>
+            <div class="form-group">
+                <label for="nom">Nom</label>
+                <input type="text" id="nom" name="nom" th:value="${patient.nom}" required/>
+            </div>
+            <div class="form-group">
+                <label for="prenom">Prénom</label>
+                <input type="text" id="prenom" name="prenom" th:value="${patient.prenom}" required/>
+            </div>
+            <div class="form-group">
+                <label for="sexe">Sexe</label>
+                <select name="sexe" id="sexe">
+                    <option value="Monsieur">Masculin</option>
+                    <option value="Madame">Feminin</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="telephone">Telephone</label>
+                <input type="number" id="telephone" name="telephone" th:value="${patient.telephone}" required/>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn"><i class="fas fa-save"></i> Enregistrer</button>
+            </div>
+        </form>
+        <!--<form th:action="@{/patients/delete/{idPatient}(idPatient=${patient.idPatient})}" method="get" style="margin-top: 1rem;">
+            <input type="hidden" name="_method" value="delete"/>
+            <button type="submit" class="btnsupp" onclick="return confirm('Voulez-vous vraiment supprimer ce patient ?')"><i class="fas fa-trash-alt"></i> Supprimer</button>
+        </form> -->
+    </main>
+    <footer>
+        <p>&copy; 2024 Gestion de Rendez-vous</p>
+    </footer>
+</body>
+</html>

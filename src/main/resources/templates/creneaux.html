@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des Créneaux</title>
+    <link rel="stylesheet" th:href="@{/css/all.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/style_entite.css}" />
+   
+</head>
+<body>
+    <header>
+        <h1>Liste des Créneaux</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a th:href="@{/}"><i class="fas fa-home"></i> Accueil</a></li>
+            <li><a th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+        </ul>
+    </nav>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID </th>
+                    <th>DateHeure de Début</th>
+                    <th>DateHeure de Fin</th>
+                    <th>Nom Médecin</th>
+                    <th>Statut</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="creneau : ${creneaux}">
+                    <td th:text="${creneau.idCreneau}"></td>
+                    <td th:text="${creneau.dateHeureDebut}"></td>
+                    <td th:text="${creneau.dateHeureFin}"></td>
+                    <td th:text="${creneau.medecin.nom}"></td>
+                    <td th:text="${creneau.statut}"></td>
+                    <td>
+                        <a th:href="@{'/creneaux/edit/' + ${creneau.idCreneau}}" class="btnadd"><i class="fas fa-edit"></i> Modifier</a>
+                        <a th:href="@{'/creneaux/delete/' + ${creneau.idCreneau}}" class="btnsupp" th:onclick="'return confirm(\'Voulez-vous vraiment supprimer ce créneau?\');'"><i class="fas fa-trash-alt"></i> Supprimer</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a th:href="@{/creneaux/add}" class="btn"><i class="fas fa-plus"></i> Ajouter un Créneau</a>
+    </main>
+    <footer>
+        <p>&copy; 2024 Gestion de Rendez-vous</p>
+    </footer>
+    <script>
+    </script>
+</body>
+</html>

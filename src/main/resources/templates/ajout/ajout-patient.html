@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter un Patient</title>
+    <link rel="stylesheet" th:href="@{/css/all.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/style_crud.css}"/>
+   
+</head>
+<body>
+    <header>
+        <h1>Ajouter un Patient</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a th:href="@{/patients}"><i class="fas fa-wheelchair"></i> Voir Listes des patients</a></li>
+            <li><a th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <form th:action="@{/patients/add}" method="post">
+            <div class="form-group">
+                <label for="nom">Nom</label>
+                <input type="text" id="nom" name="nom" required>
+            </div>
+            <div class="form-group">
+                <label for="prenom">Prénom</label>
+                <input type="text" id="prenom" name="prenom" required>
+            </div>
+            <div class="form-group">
+                <label for="sexe">Sexe</label>
+                <select name="sexe" id="sexe">
+                    <option value="Monsieur">Masculin</option>
+                    <option value="Madame">Feminin</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="telephone">Telephone</label>
+                <input type="number" id="telephone" name="telephone" required>
+            </div>
+            
+            <button type="submit" class="btn"><i class="fas fa-save"></i> Enregistrer</button>
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2024 Gestion de Rendez-vous</p>
+    </footer>
+</body>
+</html>

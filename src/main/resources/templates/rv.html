@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Rendez-vous - Gestion de Rendez-vous</title>
+    <link rel="stylesheet" th:href="@{/css/all.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/style_entite.css}" />
+</head>
+<body>
+    <header>
+        <h1>Rendez-vous</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a th:href="@{/}"><i class="fas fa-home"></i> Accueil</a></li>
+            <li><a th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>Liste des Rendez-vous</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Patient</th>
+                    <th> Creneaux</th>
+                    <th>Date et Heure</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="rv : ${rv}">
+                    <td th:text="${rv.idRv}">1</td>
+                    <td th:text="${rv.patient.nom}">Jean Martin</td>
+                    <td th:text="${rv.creneau.idCreneau}">Nom creneau</td>
+                    <td th:text="${rv.dateHeureCreation}">2024-06-15 10:00</td>
+                    <td>
+                        <a th:href="@{'/rv/edit/' + ${rv.idRv}}" class="btnadd"><i class="fas fa-edit"></i> Modifier</a>
+                        <a th:href="@{'/rv/delete/' + ${rv.idRv}}" class="btnsupp" th:onclick="'return confirm(\'Voulez-vous vraiment supprimer ce créneau?\');'"><i class="fas fa-trash-alt"></i> Supprimer</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a th:href="@{/rv/add}" class="btn"><i class="fas fa-plus"></i> Ajouter un Rendez-vous</a>
+    </main>
+    <footer>
+        <p>&copy; 2024 Gestion de Rendez-vous</p>
+    </footer>
+    <script>
+        
+    </script>
+</body>
+</html>

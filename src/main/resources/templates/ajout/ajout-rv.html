@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter un Rendez-vous</title>
+    <link rel="stylesheet" th:href="@{/css/all.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/style_crud.css}"/>
+</head>
+<body>
+    <header>
+        <h1>Ajouter un Rendez-vous</h1>
+    </header>
+    <nav>
+        <ul>
+            <li>
+                <a th:href="@{/rv}"><i class="fas fa-calendar-alt"></i> Voir Liste des rendez-vous</a>
+                <li><a th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+                
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <form th:action="@{/rv/add}" th:object="${rv}" method="post">
+            <div class="form-group">
+                <label for="patient">Patient:</label>
+                <select id="patient" name="patient" th:field="*{patient}">
+                    <option th:each="patient : ${patients}" th:value="${patient.idPatient}" th:text="${patient.nom}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="creneau">Créneau:</label>
+                <select id="creneau" name="creneau" th:field="*{creneau}">
+                    <option th:each="creneau : ${creneaux}" th:value="${creneau.idCreneau}" th:text="${creneau.idCreneau}"></option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="dateHeureCreation">DateHeureCreation</label>
+                <input type="datetime-local" id="dateHeureCreation" name="dateHeureCreation" required>
+            </div>
+            <button type="submit" class="btn"><i class="fas fa-save"></i> Enregistrer</button>
+        </form>
+        <div th:if="${errorMessage != null}">
+            <p th:text="${errorMessage}"></p>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Gestion de Rendez-vous</p>
+    </footer>
+</body>
+</html>

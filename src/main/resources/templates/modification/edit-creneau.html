@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Modifier un Créneau</title>
+    <link rel="stylesheet" th:href="@{/css/all.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/style_crud.css}"/>
+</head>
+<body>
+    <header>
+        <h1>Modifier un Créneau</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a th:href="@{/creneaux}"><i class="fas fa-clock"></i> Voir Listes des creneaux</a></li>
+            <li><a th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <form th:action="@{/creneaux/edit/{idCreneau}(idCreneau=${creneau.idCreneau})}" th:object="${creneau}" method="post">
+            <input type="hidden" th:field="*{idCreneau}" />
+            <div class="form-group">
+                <label for="dateHeureDebut">Date et Heure de Début:</label>
+                <input type="datetime-local" id="dateHeureDebut" name="dateHeureDebut" th:field="*{dateHeureDebut}" />
+            </div>
+
+            <div class="form-group">
+                <label for="dateHeureFin">Date et Heure de Fin:</label>
+                <input type="datetime-local" id="dateHeureFin" name="dateHeureFin" th:field="*{dateHeureFin}" />
+            </div>
+
+            <div class="form-group">
+                <label for="medecin">Médecin:</label>
+                <select id="medecin" name="medecin" th:field="*{medecin}">
+                    <option th:each="medecin : ${medecins}" th:value="${medecin.idMedecin}" th:text="${medecin.nom}"></option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="statut">Statut:</label>
+                <select id="statut" name="statut" th:field="*{statut}">
+                    <option th:each="statut : ${statuts}" th:value="${statut}" th:text="${statut}"
+                            th:selected="${statut} == *{statut}"></option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <button type="submit" class="btn"><i class="fas fa-save"></i> Enregistrer</button>
+            </div>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Gestion de Rendez-vous</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Modifier un Rendez-vous</title>
+    <link rel="stylesheet" th:href="@{/css/all.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/style_crud.css}"/>
+</head>
+<body>
+    <header>
+        <h1>Modifier un Rendez-vous</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a th:href="@{/rv}"><i class="fas fa-clock"></i> Voir Listes des Rendez-vous</a></li>
+            <li><a th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <form th:action="@{/rv/edit/{idRv}(idRv=${rv.idRv})}" th:object="${rv}" method="post">    
+            <input type="hidden" th:field="*{idRv}" />
+            <div class="form-group">
+                <label for="patient">Patient:</label>
+                <select id="patient" name="patient" th:field="*{patient}">
+                    <option th:each="patient : ${patients}" th:value="${patient.idPatient}" th:text="${patient.nom}"></option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="creneau">Créneau:</label>
+                <select id="creneau" name="creneau" th:field="*{creneau}">
+                    <option th:each="creneau : ${creneaux}" th:value="${creneau.idCreneau}" th:text="${creneau.idCreneau}"></option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="dateHeureDebut">Date et Heure de creation:</label>
+                <input type="datetime-local" id="dateHeureCreation" name="dateHeureCreation" th:field="*{dateHeureCreation}" />
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn"><i class="fas fa-save"></i> Enregistrer</button>
+            </div>
+        </form>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 Gestion de Rendez-vous</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des Médecins</title>
+    <link rel="stylesheet" th:href="@{/css/all.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/style_entite.css}" />
+    
+</head>
+<body>
+    <header>
+        <h1>Liste des Médecins</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a th:href="@{/}"><i class="fas fa-home"></i> Accueil</a></li>
+            <li><a th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+        </ul>
+    </nav>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Telephone</th>
+                    <th>Specialite</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="medecin : ${medecins}">
+                    <td th:text="${medecin.idMedecin}">1</td>
+                    <td th:text="${medecin.nom}">Nom</td>
+                    <td th:text="${medecin.prenom}">Prénom</td>
+                    <td th:text="${medecin.telephone}">Telephone</td>
+                    <td th:text="${medecin.specialite}">Specialite</td>
+                    <td>
+                        <a th:href="@{'/medecins/edit/' + ${medecin.idMedecin}}" class="btnadd"><i class="fas fa-edit"></i> Modifier</a>
+                        <a th:href="@{'/medecins/delete/' + ${medecin.idMedecin}}" class="btnsupp" th:onclick="'return confirm(\'Voulez-vous vraiment supprimer ce médecin?\');'"><i class="fas fa-trash-alt"></i> Supprimer</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a th:href="@{/medecins/add}" class="btn"><i class="fas fa-plus"></i> Ajouter un Médecin</a>
+    </main>
+    <footer>
+        <p>&copy; 2024 Gestion de Rendez-vous</p>
+    </footer>
+</body>
+</html>

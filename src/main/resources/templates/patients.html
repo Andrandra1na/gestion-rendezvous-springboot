@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des Patients</title>
+    <link rel="stylesheet" th:href="@{/css/all.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/style_entite.css}"/>
+    
+</head>
+<body>
+    <header>
+        <h1>Liste des Patients</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a th:href="@{/}"><i class="fas fa-home"></i> Accueil</a></li>
+            <li><a th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+        </ul>
+    </nav>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Sexe</th>
+                    <th>Telephone</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="patient : ${patients}">
+                    <td th:text="${patient.idPatient}">1</td>
+                    <td th:text="${patient.nom}">Nom</td>
+                    <td th:text="${patient.prenom}">Prénom</td>
+                    <td th:text="${patient.sexe}">Sexe</td>
+                    <td th:text="${patient.telephone}">Telephone</td>
+                    <td>
+                        <a th:href="@{'/patients/edit/' + ${patient.idPatient}}" class="btnadd"><i class="fas fa-edit"></i> Modifier</a>
+                        <a th:href="@{'/patients/delete/' + ${patient.idPatient}}" class="btnsupp" th:onclick="'return confirm(\'Voulez-vous vraiment supprimer ce patient?\');'"><i class="fas fa-trash-alt"></i> Supprimer</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a th:href="@{/patients/add}" class="btn"><i class="fas fa-plus"></i> Ajouter un Patient</a>
+    </main>
+    <footer>
+        <p>&copy; 2024 Gestion de Rendez-vous</p>
+    </footer>
+</body>
+</html>

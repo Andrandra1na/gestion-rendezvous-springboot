@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter un Médecin</title>
+    <link rel="stylesheet" th:href="@{/css/all.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/style_crud.css}"/>
+</head>
+<body>
+    <header>
+        <h1>Ajouter un Médecin</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a th:href="@{/medecins}"><i class="fas fa-user-md"></i> Voir Listes des medecins</a></li>
+            <li><a th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <form th:action="@{/medecins/add}" method="post">
+            <div class="form-group">
+                <label for="nom">Nom</label>
+                <input type="text" id="nom" name="nom" required>
+            </div>
+            <div class="form-group">
+                <label for="prenom">Prénom</label>
+                <input type="text" id="prenom" name="prenom" required>
+            </div>
+            <div class="form-group">
+                <label for="telephone">Telephone</label>
+                <input type="number" id="telephone" name="telephone" required>
+            </div>
+            <div class="form-group">
+                <label for="specialite">Specialite</label>
+                <select name="specialite" id="specialite">
+                    <option value="Cardiologie"> Cardiologie</option>
+                    <option value="Dermatologie">Dermatologie</option>
+                    <option value="Gynécologie">Gynécologie</option>
+                    <option value="Piedatrie">Piedatrie</option>
+                    <option value="Psychiatrie">Psychiatrie</option>
+                </select>
+            </div>
+            <button type="submit" class="btn"><i class="fas fa-save"></i> Enregistrer</button>
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2024 Gestion de Rendez-vous</p>
+    </footer>
+</body>
+</html>

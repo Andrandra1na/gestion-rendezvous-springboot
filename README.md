@@ -6,7 +6,7 @@ Ce projet est basé sur un TP de **Technologies Web Avancées** de l'ESMIA.
 L'objectif est de construire une **application Java EE** moderne en utilisant **Spring Boot** avec une architecture professionnelle (Web, EJB, JPA, JDBC, Web Services).
 
 ---
-
+    
     🛠 Objectifs principaux
 
 - **Créer une base de données `base_medecin`** sous MySQL.

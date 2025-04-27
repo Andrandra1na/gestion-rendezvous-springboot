@@ -14,6 +14,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.example.dto.UserDto;
 import com.example.service.UserService;
 
+/**
+ * UserController is a Spring MVC controller that handles user-related requests.
+ * It provides endpoints for user registration, login, and displaying user information.
+ * The controller uses the UserService to perform operations related to user management.
+ */
 
 @Controller
 public class UserController {

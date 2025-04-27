@@ -14,6 +14,14 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import com.example.service.CustomSuccessHandler;
 import com.example.service.CustomUserDetailsService;
 
+
+/**
+ * SecurityConfig is a configuration class that sets up the security settings for the application.
+ * It configures authentication, authorization, and login/logout behavior.
+ * It uses Spring Security to secure the application and restrict access to certain pages based on user roles.
+ * The class also defines a password encoder for encoding user passwords.
+ */
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {

@@ -7,6 +7,11 @@ import com.example.service.*;
 
 import java.util.List;
 
+/**
+ * ApiController is a REST controller that handles HTTP requests for the application.
+ * It provides endpoints for managing Medecins, Patients, Creneaux, and Rendez-vous (Rv).
+ * The controller uses the service layer to perform CRUD operations on the entities.
+ */
 @RestController
 @RequestMapping("/api")
 public class ApiController {

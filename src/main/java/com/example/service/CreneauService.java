@@ -4,6 +4,10 @@ import java.util.List;
 
 import com.example.entity.Creneaux;
 
+/**
+ * CreneauService is an interface that defines the contract for the Creneau service layer.
+ * It provides methods to perform CRUD operations on Creneaux entities.
+ */
 public interface CreneauService {
     List<Creneaux> getAllCreneaux();
     Creneaux createCreneau(Creneaux creneau);
